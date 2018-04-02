@@ -17,7 +17,7 @@ int main()
     double *q;
     double *v;
 
-    int k = 8;
+    int k = 32;
     int n;
 
     readInput(&A,"ip2.txt",0.85);
@@ -38,7 +38,7 @@ int main()
     for(int i=0; i<n; i++) q[i] = 1;// rand()%10 + 1;
 
     // start fold
-    for(int fold = 0; fold < 1000; fold++)
+    for(int fold = 0; fold < 100; fold++)
     {
         setNull(Q.A, n, k+1);
         setNull(H.A, k+1, k);
@@ -120,12 +120,12 @@ int main()
         // displayMat(&Aq);
 
         double normDiff = sqrt(tempDot);
-        printf("\nAq-q norm \n");
+       /* printf("\nAq-q norm for %d\n",fold);
         printf("%.20lf \n",normDiff);
         if(normDiff < 0.000001){
             printf("Converged in %d folds.\n", fold);
             break;
-        }
+        }*/
     }
 
     // end fold
@@ -135,10 +135,15 @@ int main()
     for(int i=0;i < n;i++){
            printf("%lf\n",q[i] * neg);
         }
+    free(A.A[0]);
     free(A.A);
+    free(Q.A[0]);
     free(Q.A);
+    free(H.A[0]);
     free(H.A);
+    free(Aq.A[0]);
     free(Aq.A);
+    free(V.A[0]);
     free(V.A);
     free(v);
     free(q);

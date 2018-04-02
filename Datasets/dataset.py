@@ -37,7 +37,7 @@ if __name__ == '__main__':
     # for i in reversed(x):
     #     print list_index[i]
 
-    with open('ranking.txt') as r:
+    with open('ranking_small.txt') as r:
         for q in r:
             b.append(int(q.strip()))
     z = np.array(b)
